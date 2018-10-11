@@ -1,7 +1,9 @@
 FROM python:3.6-alpine
 
 
-COPY helloworld.py /usr/src/
+COPY index.html /usr/src/
+COPY perrillo.jpeg /usr/src/
 
+WORKDIR /usr/src/
 
-CMD ["/usr/src/helloworld.py"]
+CMD python -m http.server
