@@ -1,5 +1,7 @@
-FROM ubuntu:18.04
+FROM python:3.6-alpine
 
-COPY helloworld.py /home/user/
 
-RUN /home/user/helloworld.py
+COPY helloworld.py /usr/src/
+
+
+CMD ["/usr/src/helloworld.py"]
