@@ -38,8 +38,8 @@ node('docker'){
   }
 
   stage("Deploy to pre"){
-    sh "docker -H tcp://192.168.1.42:1988 stop grcanosa_app > /dev/null"
-    sh "docker -H tcp://192.168.1.42:1988 rm grcanosa_app > /dev/null"
+    sh "docker -H tcp://192.168.1.42:1988 stop grcanosa_app | true"
+    sh "docker -H tcp://192.168.1.42:1988 rm grcanosa_app | true"
     sh "docker -H tcp://192.168.1.42:1988 run -d -p 8567:8567 --name grcanosa_app jenkins01.datahack.edu:5000/grcanosa/helloworld:0.0.1"
   }
 }
