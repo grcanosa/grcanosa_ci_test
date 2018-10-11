@@ -8,17 +8,17 @@ node('docker'){
      echo "new repo"
   }
 
-  stage('pre-req'){
-    sh "docker ps -a"
-  }
+  // stage('pre-req'){
+  //   sh "docker ps -a"
+  // }
 
-  stage('show-env'){
-    sh "env"
-  }
+  // stage('show-env'){
+  //   sh "env"
+  // }
 
-  stage('sleeping...'){
-    sh "sleep 1"
-  }
+  // stage('sleeping...'){
+  //   sh "sleep 1"
+  // }
 
   stage('getting code'){
     git 'https://github.com/grcanosa/grcanosa_ci_test.git'
@@ -37,6 +37,6 @@ node('docker'){
   }
 
   stage("Deploy to pre"){
-    sh "docker -H tcp://192.168.1.42:1988 run -p 8000:8000 jenkins01.datahack.edu:5000/grcanosa/helloworld:0.0.1"
+    sh "docker -H tcp://192.168.1.42:1988 run -d -p 8000:8000 jenkins01.datahack.edu:5000/grcanosa/helloworld:0.0.1"
   }
 }
