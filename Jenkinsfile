@@ -35,4 +35,8 @@ node('docker'){
   stage("Register image"){
     sh "docker push jenkins01.datahack.edu:5000/grcanosa/helloworld:0.0.1"
   }
+
+  stage("Deploy to pre"){
+    sh "docker -H tcp://192.168.1.42:1988 run -p 8000:8000 jenkins01.datahack.edu:5000/grcanosa/helloworld:0.0.1"
+  }
 }
