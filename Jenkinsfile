@@ -30,7 +30,7 @@ node('docker'){
   }
 
   stage("Building the docker image"){
-    sh "docker build -t --build-arg=$GIT_COMMIT_HASH jenkins01.datahack.edu:5000/grcanosa/helloworld:0.0.1 ."
+    sh "docker build -t --build-arg COMMIT_ID=$GIT_COMMIT_HASH jenkins01.datahack.edu:5000/grcanosa/helloworld:0.0.1 ."
   }
 
   stage("Register image"){
