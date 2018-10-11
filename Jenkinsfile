@@ -22,6 +22,7 @@ node('docker'){
 
   stage('getting code'){
     git 'https://github.com/grcanosa/grcanosa_ci_test.git'
+    GIT_COMMIT_HASH = sh (script: "git log -n 1 --pretty=format:'%H'", returnStdout: true)
   }
 
   stage("Checking python script"){
@@ -29,14 +30,14 @@ node('docker'){
   }
 
   stage("Building the docker image"){
-    sh "docker build -t jenkins01.datahack.edu:5000/grcanosa/helloworld:0.0.1 ."
+    sh "docker build -t jenkins01.datahack.edu:8081/grcanosa/helloworld:0.0.1 ."
   }
 
   stage("Register image"){
-    sh "docker push jenkins01.datahack.edu:5000/grcanosa/helloworld:0.0.1"
+    sh "docker push jenkins01.datahack.edu:8081/grcanosa/helloworld:0.0.1"
   }
 
   stage("Deploy to pre"){
-    sh "docker -H tcp://192.168.1.42:1988 run -d -p 8000:8000 jenkins01.datahack.edu:5000/grcanosa/helloworld:0.0.1"
+    sh "docker -H tcp://192.168.1.42:1988 run -d -p 8000:8000 jenkins01.datahack.edu:8081/grcanosa/helloworld:0.0.1"
   }
 }
