@@ -21,7 +21,7 @@ node('docker'){
   }
 
   stage('getting code'){
-    git 'https://github.com/bootcampdatahack/grcanosa-ci'
+    git 'https://github.com/grcanosa/grcanosa_ci_test.git'
   }
 
   stage("Checking python script"){
