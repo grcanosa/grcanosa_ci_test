@@ -31,7 +31,7 @@ node('docker'){
 
   stage("Building the docker image"){
     #sh "docker build --build-arg COMMIT_ID=$GIT_COMMIT_HASH -t jenkins01.datahack.edu:5000/grcanosa/helloworld:0.0.1 ."
-    docker build --build-arg COMMIT_ID=$GIT_COMMIT_HASH -t grcanosaapp ."
+    sh "docker build --build-arg COMMIT_ID=$GIT_COMMIT_HASH -t grcanosaapp ."
   }
 
   stage("Register image"){
